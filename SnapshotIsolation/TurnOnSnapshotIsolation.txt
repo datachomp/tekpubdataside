@@ -1,0 +1,17 @@
+SELECT snapshot_isolation_state_desc from sys.databases 
+where name='hellotekpub';
+
+
+--Make sure you have killed other connections
+--to the DB which will block the below statements
+ALTER DATABASE hellotekpub
+    SET READ_COMMITTED_SNAPSHOT ON;
+
+ALTER DATABASE hellotekpub
+    SET ALLOW_SNAPSHOT_ISOLATION ON;
+GO
+
+
+--Make sure it is on
+SELECT snapshot_isolation_state_desc from sys.databases 
+where name='hellotekpub';
